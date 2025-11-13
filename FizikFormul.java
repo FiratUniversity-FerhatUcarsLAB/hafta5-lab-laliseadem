@@ -1,7 +1,7 @@
 /*
- * Ad Soyad: [ADINIZI BURAYA YAZIN]
- * Ogrenci No: [OGRENCI NUMARANIZI BURAYA YAZIN]
- * Tarih: [TARIHI BURAYA YAZIN]
+ * Ad Soyad: [Lalise Adem Wado]
+ * Ogrenci No: [240541610]
+ * Tarih: [11/13/2025]
  * Aciklama: Gorev 2 - Fizik Formulu Asistani
  *
  * Bu program temel fizik formullerini kullanarak
@@ -9,118 +9,70 @@
  */
 
 import java.util.Scanner;
-
 public class FizikFormul {
-
-    // Sabit: Yercekimi ivmesi
-    final static double GRAVITY = 9.8; // m/s²
-
-    // METOT 1: Hız hesapla (v = s / t)
-    public static double calculateVelocity(double distance, double time) {
-        // v = mesafe / zaman
-        return 0.0; // Degistirin
-    }
-
-    // METOT 2: İvme hesapla (a = Δv / t)
-    public static double calculateAcceleration(double velocityChange, double time) {
-        // a = hiz degisimi / zaman
-        return 0.0; // Degistirin
-    }
-
-    // METOT 3: Kuvvet hesapla (F = m * a)
-    public static double calculateForce(double mass, double acceleration) {
-        // F = kutle * ivme
-        return 0.0; // Degistirin
-    }
-
-    // METOT 4: İş hesapla (W = F * d)
-    public static double calculateWork(double force, double distance) {
-        // W = kuvvet * mesafe
-        return 0.0; // Degistirin
-    }
-
-    // METOT 5: Güç hesapla (P = W / t)
-    public static double calculatePower(double work, double time) {
-        // P = is / zaman
-        return 0.0; // Degistirin
-    }
-
-    // METOT 6: Kinetik enerji (KE = 0.5 * m * v²)
-    public static double calculateKineticEnergy(double mass, double velocity) {
-        // KE = 0.5 * kutle * (hiz * hiz)
-        // Math.pow(velocity, 2) kullanabilirsiniz
-        return 0.0; // Degistirin
-    }
-
-    // METOT 7: Potansiyel enerji (PE = m * g * h)
-    public static double calculatePotentialEnergy(double mass, double gravity, double height) {
-        // PE = kutle * yercekimi * yukseklik
-        return 0.0; // Degistirin
-    }
-
-    // METOT 8: Momentum (p = m * v)
-    public static double calculateMomentum(double mass, double velocity) {
-        // p = kutle * hiz
-        return 0.0; // Degistirin
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[]args){
         Scanner input = new Scanner(System.in);
+        //Hiz hesplama.
+        System.out.print("Yerdegistirme giriniz(m): ");
+        double yerdegistirme = input.nextDouble();
+        System.out.print("Zaman giriniz(s): ");
+        double zaman = input.nextDouble();
+        System.out.printf("Hiz: %.2fm/s\n", calculateVelocity(yerdegistirme,zaman));
+        //Ivme Hesaplama.
+        System.out.print("Ilk hizini giriniz(m/s): ");
+        double ilkHiz = input.nextDouble();
+        System.out.print("Son hizini giriniz(m/s): ");
+        double sonHiz = input.nextDouble();
+        System.out.printf("Ivme: %.2fm/s^2\n" ,calculateAcceleration(ilkHiz,sonHiz,zaman));
+        //Kuvvet Hesaplama
+        double ivme = calculateAcceleration(ilkHiz, sonHiz, zaman);
+        System.out.print("kutle giriniz(kg): ");
+        double kutle = input.nextDouble();
+        System.out.printf("Kuvvet: %.2fN\n" , calculateForce(kutle , ivme));
+        //Is Hesaplama.
+        double kuvvet = calculateForce(kutle , ivme);
+        System.out.print("Mesafe girninz(m): ");
+        double yer_degistirme = input.nextDouble();
+        System.out.printf("Is: %.2fJ\n" ,calculateWork(kuvvet,yer_degistirme));
+        //Guc hesaplama
+        double is = calculateWork(kuvvet, yer_degistirme);
+        System.out.print("Zaman giriniz(s): ");
+        double zaman2 = input.nextDouble();
+        System.out.printf("Guc %.2fJ\n" , calculatePower(is,zaman2));
+        //Kinetik Enerji hesaplama.
+        System.out.print("kutle giriniz(kg): ");
+        double kutle2 = input.nextDouble();
+        System.out.print("surat giriniz(m/s): ");
+        double surat= input.nextDouble();
+        System.out.printf("Kinetik Enerji: %.2fJ\n" , calculateKineticEnergy(kutle2,surat));
+        //Potansiyel Enerji hesaplama
+        final double GRAVITY = 9.8;
+        System.out.print("Yuksekligi giriniz(m): ");
+        double yukseklik = input.nextDouble();
+        System.out.printf("Potansiyel Enerji: %.2fJ\n", calculatePotentialEnergy(kutle2,GRAVITY,yukseklik));
+        input.close();33
 
-        System.out.println("=== FIZIK FORMUL ASISTANI ===");
-        System.out.println();
-
-        // TEMEL OLCUMLER
-        System.out.println("TEMEL OLCUMLER:");
-        System.out.print("Kutle (kg): ");
-        double mass = input.nextDouble();
-
-        System.out.print("Mesafe (m): ");
-        double distance = input.nextDouble();
-
-        System.out.print("Zaman (s): ");
-        double time = input.nextDouble();
-
-        System.out.print("Hiz degisimi (m/s): ");
-        double deltaV = input.nextDouble();
-
-        System.out.print("Yukseklik (m): ");
-        double height = input.nextDouble();
-
-        // HESAPLAMALARI YAP - Metotlari cagir
-        // 1. Hiz (v) hesaplanmali (KE ve Momentum icin gerekli)
-        // 2. Ivme (a) hesaplanmali (Kuvvet icin gerekli)
-        // 3. Kuvvet (F) hesaplanmali (Is icin gerekli)
-        // 4. Is (W) hesaplanmali (Guc icin gerekli)
-        // ... digerlerini hesaplayin
-  
-
-
-        // SONUCLARI YAZDIR
-        System.out.println("\n========================================");
-        System.out.println("        HESAPLAMA SONUCLARI");
-        System.out.println("========================================");
-
-        System.out.println("\nHIZ ve HAREKET:");
-        System.out.printf("  Hiz (v = s/t)             : %.2f m/s\n", velocity);
-        System.out.printf("  Ivme (a = Δv/t)           : %.2f m/s²\n", acceleration);
-
-        System.out.println("\nKUVVET ve IS:");
-        System.out.printf("  Kuvvet (F = m*a)          : %.2f N\n", force);
-        System.out.printf("  Is (W = F*d)              : %.2f J\n", work);
-        System.out.printf("  Guc (P = W/t)             : %.2f W\n", power);
-
-        System.out.println("\nENERJI:");
-        System.out.printf("  Kinetik Enerji (KE)       : %.2f J\n", kineticEnergy);
-        System.out.printf("  Potansiyel Enerji (PE)    : %.2f J\n", potentialEnergy);
-        // Toplam enerji = KE + PE
-        System.out.printf("  Toplam Enerji             : %.2f J\n", (kineticEnergy + potentialEnergy)); 
-
-        System.out.println("\nMOMENTUM:");
-        System.out.printf("  Momentum (p = m*v)        : %.2f kg·m/s\n", momentum);
-
-        System.out.println("\n========================================");
-
-        input.close();
     }
+    public static double calculateVelocity(double yerdegistirme , double zaman){
+        return yerdegistirme/zaman;
+    }
+    public static double calculateAcceleration(double ilkHiz, double sonHiz, double zaman){
+        return (sonHiz - ilkHiz)/zaman;
+    }
+    public static double calculateForce(double kutle , double ivme){
+        return kutle * ivme;
+    }
+    public static double calculateWork(double kuvvet, double yer_degistirme){
+        return kuvvet * yer_degistirme;
+    }
+    public static double calculatePower(double is , double zaman2){
+        return is/zaman2;
+    }
+    public static double calculateKineticEnergy(double kutle2 , double surat){
+        return 0.5 * kutle2 * Math.pow(surat,2);
+    }
+    public static double calculatePotentialEnergy(double kutle2 , double GRAVITY,double yukseklik){
+        return kutle2 * GRAVITY * yukseklik;
+    }
+
 }
